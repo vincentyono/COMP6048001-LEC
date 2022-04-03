@@ -55,12 +55,10 @@ template <typename T> void LinkedList<T>::print() const {
 
 template <typename T> void LinkedList<T>::ReversePrint() const {
   ReversePrint(this->head->next);
-  std::cout << this->head->data << " -> ";
+  std::cout << this->head->data << std::endl;
 }
 
 template <typename T> void LinkedList<T>::ReversePrint(Node<T> *ptr) const {
-  if (ptr == nullptr)
-    std::cout << "nullptr" << std::endl;
   if (ptr != nullptr) {
     ReversePrint(ptr->next);
     std::cout << ptr->data << " -> ";
@@ -74,10 +72,10 @@ template <typename T> void LinkedList<T>::ReversePrintIterative() const {
     arr[i] = current->data;
     current = current->next;
   }
-  for (int i = this->count - 1; i >= 0; i--) {
+  for (int i = this->count; i > 0; i--) {
     std::cout << arr[i] << " -> ";
   }
-  std::cout << "nullptr" << std::endl;
+  std::cout << arr[0] << std::endl;
 }
 
 template <typename T> void LinkedList<T>::remove(T data) {
