@@ -5,24 +5,38 @@
 
 int main() {
   StackLinkedList<std::string> *stack = new StackLinkedList<std::string>();
-  stack->push("Apple");
-  std::cout << "Stack Top: " << stack->top() << ", Count: " << stack->size()
-            << std::endl; // Apple
-  stack->push("Pear");
-  std::cout << "Stack Top: " << stack->top() << ", Count: " << stack->size()
-            << std::endl; // Apple
-  stack->pop();
-  std::cout << "Stack Top: " << stack->top() << ", Count: " << stack->size()
-            << std::endl; // Apple
+
+  std::cout << "===========Testing Stack===========" << std::endl;
+
+  stack->push("Apple");                              // ["Apple"]
+  std::cout << "Top: " << stack->top() << std::endl; // Top: Apple
+  stack->push("Ball");                               // ["Apple", "Ball"]
+  std::cout << "Top: " << stack->top() << std::endl; // Top: Ball
+  stack->pop();                                      // ["Apple"]
+  std::cout << "Top: " << stack->top() << std::endl; // Top: Apple
+  stack->push("Cat");                                // ["Apple", "Cat"]
+  std::cout << "Top: " << stack->top() << std::endl; // Top: Cat
+
+  std::cout << "===========Testing LinkedList===========" << std::endl;
 
   LinkedList<int> *linkedlist = new LinkedList<int>();
-  linkedlist->append(3);
-  linkedlist->insertFirst(2);
-  linkedlist->append(4);
-  linkedlist->insertFirst(1);
-  linkedlist->append(5);
-  linkedlist->ReversePrint();
-  linkedlist->ReversePrintIterative();
+  linkedlist->append(3); // [3]
+  linkedlist->print();
+  linkedlist->insertFirst(2); // [2, 3]
+  linkedlist->print();
+  linkedlist->append(4); // [2, 3, 4]
+  linkedlist->print();
+  linkedlist->append(5); // [2, 3, 4, 5]
+  linkedlist->print();
+  linkedlist->insertFirst(1); // [1, 2, 3, 4, 5]
+  linkedlist->print();
+
+  std::cout << "===========Testing ReversePrint===========" << std::endl;
+
+  linkedlist
+      ->ReversePrint(); // Time complexity of recursive ReversePrint = O(n)
+  linkedlist->ReversePrintIterative(); // Time complexity of Iterative
+                                       // ReversePrint = O(n)
 
   return 0;
 }
